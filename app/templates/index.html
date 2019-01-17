@@ -1,0 +1,205 @@
+{% extends "base.html" %}
+{% block body %}
+<body class="index">
+    <main class="container">
+        <div class="header">
+            <h2>Bienvenido, Administrador</h2>
+        </div>
+        <section class="report row align-items-center justify-content-center">
+            <div class="col-sm-10">
+                <h4>Reportes Ventas</h4>
+                <div class="secform" id="sec-form" method="post">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="row align-items-center">
+                                <div class="table-responsive-lg">
+                                    <div class="tabla">
+                                        <table class="table table-striped">
+                                          <h5>Año 2017</h5>
+                                            <thead>
+                                            <tr>
+                                              <th scope="col">Meses</th>
+                                              <th scope="col">Total Ventas</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                          <tr>
+                                              <th scope="row">Diciembre</th>
+                                              <td>
+                                                {% for row in rows %}
+                                                    {{row[11]}}
+                                                  {% endfor %}
+                                              </td>
+                                          </tr>
+                                          </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="row align-items-center">
+                                <div class="table-responsive-lg">
+                                    <div class="tabla">
+                                        <table class="table table-striped">
+                                          <h5>Año 2018</h5>
+                                            <thead>
+                                            <tr>
+                                              <th scope="col">Meses</th>
+                                              <th scope="col">Total Ventas</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            <tr>
+                                              <th scope="row">Enero</th>
+                                              <td>
+                                                {% for row in rows %}
+                                                    {{row[0]}}
+                                                  {% endfor %}
+                                              </td>
+                                            </tr>
+                                            <tr>
+                                              <th scope="row">Febrero</th>
+                                              <td>
+                                                {% for row in rows %}
+                                                    {{row[1]}}
+                                                  {% endfor %}
+                                              </td>
+                                            </tr>
+                                            <tr>
+                                              <th scope="row">Marzo</th>
+                                              <td>
+                                                {% for row in rows %}
+                                                    {{row[2]}}
+                                                  {% endfor %}
+                                              </td>
+                                            </tr>
+                                            <tr>
+                                              <th scope="row">Abril</th>
+                                              <td>
+                                                {% for row in rows %}
+                                                    {{row[3]}}
+                                                  {% endfor %}
+                                              </td>
+                                            </tr>
+                                          <tr>
+                                              <th scope="row">Mayo</th>
+                                              <td>
+                                                {% for row in rows %}
+                                                    {{row[4]}}
+                                                  {% endfor %}
+                                              </td>
+                                            </tr>
+                                          <tr>
+                                              <th scope="row">Junio</th>
+                                              <td>
+                                                {% for row in rows %}
+                                                    {{row[5]}}
+                                                  {% endfor %}
+                                              </td>
+                                            </tr>
+                                          <tr>
+                                              <th scope="row">Julio</th>
+                                              <td>
+                                                {% for row in rows %}
+                                                    {{row[6]}}
+                                                  {% endfor %}
+                                              </td>
+                                            </tr>
+                                          <tr>
+                                              <th scope="row">Agosto</th>
+                                              <td>
+                                                {% for row in rows %}
+                                                    {{row[7]}}
+                                                  {% endfor %}
+                                              </td>
+                                            </tr>
+                                          <tr>
+                                              <th scope="row">Septiembre</th>
+                                              <td>
+                                                {% for row in rows %}
+                                                    {{row[8]}}
+                                                  {% endfor %}
+                                              </td>
+                                            </tr>
+                                          <tr>
+                                              <th scope="row">Octubre</th>
+                                              <td>
+                                                {% for row in rows %}
+                                                    {{row[9]}}
+                                                  {% endfor %}
+                                              </td>
+                                            </tr>
+                                          <tr>
+                                              <th scope="row">Noviembre</th>
+                                              <td>
+                                                {% for row in rows %}
+                                                    {{row[10]}}
+                                                  {% endfor %}
+                                              </td>
+                                            </tr>
+                                          <tr>
+                                              <th scope="row">Diciembre</th>
+                                              <td>
+                                                {% for row in rows %}
+                                                    {{row[11]}}
+                                                  {% endfor %}
+                                              </td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="row align-items-center">
+                                <div class="table-responsive-lg">
+                                    <div class="tabla">
+                                        <table class="table table-striped">
+                                          <h5>Año 2019</h5>
+                                            <thead>
+                                            <tr>
+                                              <th scope="col">Meses</th>
+                                              <th scope="col">Total Ventas</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            <tr>
+                                              <th scope="row">Enero</th>
+                                              <td>
+                                                {% for row in rows %}
+                                                    {{row[0]}}
+                                                  {% endfor %}
+                                              </td>
+                                            </tr>
+                                            <tr>
+                                              <th scope="row">Febrero</th>
+                                              <td>
+                                                {% for row in rows %}
+                                                    {{row[1]}}
+                                                  {% endfor %}
+                                              </td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+        <script>
+            $('#fecha_inicio').datepicker({
+                uiLibrary: 'bootstrap4'
+            });
+
+            $('#fecha_fin').datepicker({
+                uiLibrary: 'bootstrap4'
+            });
+        </script>
+</body>
+{% endblock %}
