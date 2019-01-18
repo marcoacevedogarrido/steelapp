@@ -62,7 +62,7 @@ def login():
         user = User.query.filter_by(username=form.username.data).first()
         if user is None or not user.check_password(form.password.data):
             flash('Invalid username or password')
-            return redirect(url_for('index'))
+            return redirect(url_for('login'))
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
@@ -73,6 +73,7 @@ def login():
 
 @app.route('/reportes', methods=['GET'])
 @login_required
+@check_rol("admin")
 def reportes():
     con: Connection = sql.connect('steelpludb.db')
     con.row_factory = sql.Row
@@ -99,6 +100,8 @@ def reportes():
 
 
 @app.route('/logout')
+@login_required
+@check_rol("admin")
 def logout():
     logout_user()
     return redirect(url_for('main'))
