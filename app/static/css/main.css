@@ -151,9 +151,8 @@ h6 {
     margin-bottom:2%;
 }
 
-.container {
-    margin-left:auto;
-    margin-right:auto;
+.container-fluid {
+    max-width:70%;
 }
 
 .map-responsive{
@@ -178,8 +177,12 @@ height:0%;
     padding-top:2%;
 }
 
-.pull-right {
+.iconos .pull-right {
     text-align:right;
+}
+
+.iconos .pull-left {
+    text-align:left;
 }
 
 .col-lg-4 {
@@ -202,3 +205,19 @@ height:0%;
 .contact-info {
     margin-bottom:10%;
 }
+
+.pie-de-pagina .iconos {
+    margin-right:1%;
+    font-size:130%;
+}
+
+.tab .row {
+    margin-top:10%;
+    margin-bottom:10%;
+}
+
+.tab h5 {
+    text-align:center;
+}
+
+
