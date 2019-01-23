@@ -1,7 +1,9 @@
+import json
 import sqlite3 as sql
 from functools import wraps
 from sqlite3.dbapi2 import Connection
 
+import requests
 from flask import render_template, redirect, flash, request, abort
 from flask import url_for
 from flask_login import login_user, current_user, login_required, logout_user
@@ -71,31 +73,18 @@ def login():
     return render_template('login.html', title='Sign In', form=form)
 
 
-@app.route('/reportes', methods=['GET'])
+@app.route('/index', methods=['GET', 'POST'])
 @login_required
 @check_rol("admin")
 def reportes():
-    con: Connection = sql.connect('steelpludb.db')
-    con.row_factory = sql.Row
+    auth = requests.auth.HTTPBasicAuth('xbi', 'xbi102938')
+    URL = 'http://Xsolution.cl:5071/biVentas/76783666k/2017-01-01/2017-12-01'
+    parameters = {'token': 'pigFEWljiFkna0HsIthaGca58rzsFtG4'}
 
-    cur = con.cursor()
-    cur.execute('SELECT sum(enero), '
-                'sum(febrero), '
-                'sum(marzo), '
-                'sum(abril), '
-                'sum(mayo), '
-                'sum(junio), '
-                'sum(julio), '
-                'sum(agosto), '
-                'sum(septiembre), '
-                'sum(octubre), '
-                'sum(noviembre), '
-                'sum(diciembre) '
-                'from ventas')
-    rows = cur.fetchall()
-
-    con.close()
-
+    try:
+        rows = requests.get(URL, auth=auth, verify=False, headers=parameters)
+    except:
+        rows = []
     return render_template('index.html', rows=rows)
 
 
@@ -208,4 +197,3 @@ def reset_password(token):
 @app.route('/nosotros', methods=['GET'])
 def nosotros():
     return render_template('nosotros.html')
-

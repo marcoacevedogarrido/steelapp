@@ -12,7 +12,7 @@ $(document).ready(function() {
 
         $("#dataTable tbody").on('click', 'tr', function () {
             var data = table.row(this).data();
-            window.location.href = 'http://Xsolution.cl:5071/biVentas/76783666k';
+            window.location.href = "/formulario/"+data[0];
         }).on('mouseover', 'tr', function () {
             $('html,body').css('cursor','pointer');
         }).on('mouseout','tr',function () {
@@ -23,5 +23,16 @@ $(document).ready(function() {
 
 });
 
+
+
+$(document).ready(function() {
+	$(chart_id).highcharts({
+		chart: chart,
+		title: title,
+		xAxis: xAxis,
+		yAxis: yAxis,
+		series: series
+	});
+});
 
 
