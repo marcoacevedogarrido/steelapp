@@ -13,23 +13,22 @@
                         <form action="" method="post">
                             <div class="row justify-content-star">
                                 <div class="col-sm-12">
-                                        {% for usuario in usuario %}
-                                            <div class="form-group row">
-                                                <div class="col-sm-8">
-                                                    <div>Nombre de Usuario: {{ usuario.username }}</div>
-                                                </div>
-                                                <div class="col-sm-8">
-                                                    <div>Email de Usuario: {{ usuario.email }}</div>
-                                                </div>
-                                                <div class="col-sm-12">
-                                                    <a href="{{ url_for('usuario_edit', usuario_id=usuario.id) }}">
-                                                        <button type="button" class="btn btn-primary">Editar <span><i class="fa fa-edit" ></i></span></button></a>
-                                                    <a href="{{ url_for('usuario_create', usuario_id=usuario.id) }}">
-                                                        <button type="button" class="btn btn-success">Agregar Usuario <span><i class="fas fa-address-card" ></i></span></button></a>
-                                                </div>
+                                    {% for usuario in usuario %}
+                                        <div class="form-group row">
+                                            <div class="col-sm-8">
+                                                <div>Nombre de Usuario: {{ usuario.username }}</div>
                                             </div>
+                                            <div class="col-sm-8">
+                                                <div>Email de Usuario: {{ usuario.email }}</div>
                                             </div>
-                                        {% endfor %}
+                                            <div class="col-sm-12">
+                                                <a href="{{ url_for('usuario_edit', usuario_id=usuario.id) }}">
+                                                    <button type="button" class="btn btn-primary">Editar <span><i class="fa fa-edit" ></i></span></button></a>
+                                                <a href="{{ url_for('usuario_create', usuario_id=usuario.id) }}">
+                                                    <button type="button" class="btn btn-success">Agregar Usuario <span><i class="fas fa-address-card" ></i></span></button></a>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
                                 </div>
                             </div>
                         </form>

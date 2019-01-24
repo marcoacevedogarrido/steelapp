@@ -114,4 +114,4 @@ venv.bak/
 .idea/
 
 #test db
-app.db
+steelpludb.db

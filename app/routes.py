@@ -1,14 +1,11 @@
-import json
 import sqlite3 as sql
 from functools import wraps
 from sqlite3.dbapi2 import Connection
-
 import requests
 from flask import render_template, redirect, flash, request, abort
 from flask import url_for
 from flask_login import login_user, current_user, login_required, logout_user
 from werkzeug.urls import url_parse
-
 from app.email import send_password_reset_email
 from app.forms import LoginForm, UsuarioForm, BaseUserForm
 from app.forms import ResetPasswordForm
@@ -22,7 +19,6 @@ if app.debug:
         db.drop_all()
         db.create_all()
 
-        # Create test user
         new_rol = Rol(name='admin', rol_email='admin@test.net')
         db.session.add(new_rol)
         new_rol = Rol(name='operador', rol_email='operadores@test.net')
@@ -44,9 +40,7 @@ def check_rol(role='ANY'):
             if user_rol != role:
                 return abort(404)
             return fn(*args, **kwargs)
-
         return decorated_view
-
     return wrapper
 
 

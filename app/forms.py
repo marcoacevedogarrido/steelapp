@@ -15,25 +15,24 @@ class BaseUserForm(FlaskForm):
     username = StringField('Nuevo Usuario:', validators=[DataRequired(), length(min=5, max=20)])
     email = StringField('Email:', validators=[DataRequired(), Email()])
     password = PasswordField('Nueva Contraseña:',
-                             validators=[EqualTo('password2', message="contraseñas deben coincidir!")])
+                             validators=[EqualTo('password2', message='contraseñas deben coincidir!')])
     password2 = PasswordField('Repetir Contraseña:')
     rol = SelectField('Seleccione rol:')
-
     submit = SubmitField('Registrar')
 
 
 class UsuarioForm(BaseUserForm):
     password = PasswordField('Nueva Contraseña:',
-                             validators=[InputRequired(), EqualTo('password2', message="contraseñas deben coincidir!")])
+                             validators=[InputRequired(), EqualTo('password2', message='contraseñas deben coincidir!')])
 
     @staticmethod
-    def validate_email(self, email):
+    def validate_email(email):
         user = User.query.filter_by(email=email.data).first()
         if user is not None:
             raise ValidationError('Email ya Registrado.')
 
     @staticmethod
-    def validate_username(self, username):
+    def validate_username(username):
         user = User.query.filter_by(username=username.data).first()
         if user is not None:
             raise ValidationError('Usuario ya Registrado.')

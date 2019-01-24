@@ -55,7 +55,7 @@
                                         </div>
                                     </div>
                                     {{ form.hidden_tag() }}
-                                        <button href={{ form.submit(class_="btn btn-primary" ) }} Editar Usuarios <i class="fas fa-edit"></i></button>
+                                        <button href={{ form.submit(class_="btn btn-primary") }} Editar Usuarios <i class="fas fa-edit"></i></button>
                                     {% if edited_usuario %}
                                         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
                                             Eliminar <span><i class="fa fa-times"></i></span>
@@ -70,7 +70,8 @@
         </section>
     </main>
 
-    <!-- Modal -->
+    <!-- Modal eliminar usuario -->
+
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -81,7 +82,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    ¿Esta seguro que desea eliminar al Usuario?
+                    ¿Esta seguro que desea eliminar al Usuario ?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">Close</button>
