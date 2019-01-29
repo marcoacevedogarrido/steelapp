@@ -1,6 +1,4 @@
-import sqlite3 as sql
 from functools import wraps
-from sqlite3.dbapi2 import Connection
 import requests
 from flask import render_template, redirect, flash, request, abort
 from flask import url_for
@@ -13,21 +11,21 @@ from app.forms import ResetPasswordRequestForm
 from app.models import *
 
 if app.debug:
-    @app.before_first_request
+    # @app.before_first_request
     def create_user():
         print("running debug mode DB and scripts")
         db.drop_all()
         db.create_all()
 
-        new_rol = Rol(name='admin', rol_email='admin@test.net')
+        new_rol = Rol(name='admin', rol_email='admin@steelplus.cl')
         db.session.add(new_rol)
-        new_rol = Rol(name='operador', rol_email='operadores@test.net')
+        new_rol = Rol(name='operador', rol_email='operadores@steelplus.cl')
         db.session.add(new_rol)
         db.session.commit()
 
-        new_user = User(username="admin", email="admin@test.net", rol_id=1)
+        new_user = User(username="alejandro", email="aherrera@steelplus.cl", rol_id=1)
 
-        new_user.set_password('password')
+        new_user.set_password('steelplus')
         db.session.add(new_user)
         db.session.commit()
 
@@ -40,7 +38,9 @@ def check_rol(role='ANY'):
             if user_rol != role:
                 return abort(404)
             return fn(*args, **kwargs)
+
         return decorated_view
+
     return wrapper
 
 
@@ -72,13 +72,14 @@ def login():
 @check_rol("admin")
 def reportes():
     auth = requests.auth.HTTPBasicAuth('xbi', 'xbi102938')
-    URL = 'http://Xsolution.cl:5071/biVentas/76783666k/2017-01-01/2017-12-01'
+    URL = 'http://xsolution.cl:5071/biResumenVtas/76783666/2019-01-01'
     parameters = {'token': 'pigFEWljiFkna0HsIthaGca58rzsFtG4'}
 
     try:
         rows = requests.get(URL, auth=auth, verify=False, headers=parameters)
     except:
         rows = []
+
     return render_template('index.html', rows=rows)
 
 
